@@ -15,20 +15,20 @@ public class MotorController {
         backRightMotor = BR;
     }
 
-    void setMotorSpeeds(double forwardSpeed, double turnSpeed, double strafeSpeed){
+    public void setMotorSpeeds(double forwardSpeed, double turnSpeed, double strafeSpeed){
 
-        //control the motors with X, Y and rotate.
+        //Control the motors with X, Y and rotate.
         double frontLeftSpeed = forwardSpeed + turnSpeed + strafeSpeed;
         double backLeftSpeed = forwardSpeed + turnSpeed - strafeSpeed;
         double frontRightSpeed = forwardSpeed - turnSpeed - strafeSpeed;
         double backRightSpeed = forwardSpeed - turnSpeed + strafeSpeed;
 
-        //Find max to prevent value saturation
+        //Find max to prevent value saturation.
         double max1 = Math.max(Math.abs(frontLeftSpeed), Math.abs(backLeftSpeed));
         double max2 = Math.max(Math.abs(frontRightSpeed), Math.abs(backRightSpeed));
         double max3 = Math.max(max1, max2);
 
-        //Make sure no motor speeds are over 1
+        //Make sure no motor speeds are over 1.
         frontLeftMotor.setPower(frontLeftSpeed/max3);
         backLeftMotor.setPower(backLeftSpeed/max3);
         frontRightMotor.setPower(frontRightSpeed/max3);

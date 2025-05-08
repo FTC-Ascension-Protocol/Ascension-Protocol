@@ -19,7 +19,7 @@ public class SubsystemsV1 extends LinearOpMode {
                 hardwareMap.get(DcMotor.class, "frontRightMotor"),
                 hardwareMap.get(DcMotor.class, "backRightMotor")
         );
-        gamepad1 = hardwareMap.get(Gamepad.class, "GamepadA");
+
         waitForStart();
 
         while(opModeIsActive()){
