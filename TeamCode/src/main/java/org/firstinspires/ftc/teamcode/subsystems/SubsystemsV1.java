@@ -7,10 +7,12 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
 import org.firstinspires.ftc.teamcode.subsystems.drivebase.MotorController;
+import org.firstinspires.ftc.teamcode.subsystems.extendo.BoxSlideController;
 
 @TeleOp(name="SubsystemsV1", group="Linear OpMode")
 public class SubsystemsV1 extends LinearOpMode {
     MotorController drivebase = new MotorController();
+    BoxSlideController slides = new BoxSlideController();
     Gamepad gamepad1;
     @Override
     public void runOpMode(){

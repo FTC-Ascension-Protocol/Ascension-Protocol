@@ -4,20 +4,23 @@ import com.arcrobotics.ftclib.controller.PIDController;
 import com.arcrobotics.ftclib.controller.PIDFController;
 
 public class BoxSlideController {
-
-    public void setExtendoPosition(PIDFController pidf){
+    double kP;
+    double kI;
+    double kD;
+    double kF;
+    PIDFController pidf = new PIDFController(kP,kI,kD,kF);
+    public void setGains(double kp, double ki, double kd, double kf) {
         // set our gains to some value
-        pidf.setP(0.37);
-        pidf.setI(0.05);
-        pidf.setD(1.02);
+        pidf.setP(kp);
+        pidf.setI(ki);
+        pidf.setD(kd);
 
         // get our gain constants
         kP = pidf.getP();
         kI = pidf.getI();
         kD = pidf.getD();
-
         // set all gains
-        pidf.setPIDF(kP, KI, kD, 0.7);
+        pidf.setPIDF(kP, kI, kD, 0.7);
 
         // get all gain coefficients
         double[] coeffs = pidf.getCoefficients();
@@ -25,5 +28,9 @@ public class BoxSlideController {
         kI = coeffs[1];
         kD = coeffs[2];
         kF = coeffs[3];
+    }
+
+    public void setSlidesPosition(PIDFController pidf){
+
     }
 }
