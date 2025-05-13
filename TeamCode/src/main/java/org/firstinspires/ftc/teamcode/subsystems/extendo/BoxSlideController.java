@@ -2,6 +2,9 @@ package org.firstinspires.ftc.teamcode.subsystems.extendo;
 
 import com.arcrobotics.ftclib.controller.PIDController;
 import com.arcrobotics.ftclib.controller.PIDFController;
+import com.arcrobotics.ftclib.hardware.motors.Motor;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class BoxSlideController {
     double kP;
@@ -9,6 +12,10 @@ public class BoxSlideController {
     double kD;
     double kF;
     PIDFController pidf = new PIDFController(kP,kI,kD,kF);
+    DcMotor slides;
+    public void initialise(DcMotor s){
+        slides = s;
+    }
     public void setGains(double kp, double ki, double kd, double kf) {
         // set our gains to some value
         pidf.setP(kp);
@@ -30,7 +37,15 @@ public class BoxSlideController {
         kF = coeffs[3];
     }
 
-    public void setSlidesPosition(PIDFController pidf){
-
+    public void setSlidesPosition(double setpoint){
+        //Set PID Setpoint
+        pidf.setSetPoint(setpoint);
+        while(!pidf.atSetPoint()) {
+            double output = pidf.calculate(
+                    slides.getCurrentPosition()
+            );
+            slides.setPower(output);
+        }
+        slides.setPower(0);
     }
 }
