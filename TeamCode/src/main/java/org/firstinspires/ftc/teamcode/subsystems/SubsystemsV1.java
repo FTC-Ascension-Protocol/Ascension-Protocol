@@ -22,11 +22,14 @@ public class SubsystemsV1 extends LinearOpMode {
                 hardwareMap.get(DcMotor.class, "frontRightMotor"),
                 hardwareMap.get(DcMotor.class, "backRightMotor")
         );
+        slides.initialise(hardwareMap.get(DcMotor.class, "boxSlides"));
+        slides.setGains(0.7,0.7,0.7,0.7);
 
         waitForStart();
 
         while(opModeIsActive()){
             drivebase.drive(gamepad1);
+            slides.setSlidesPosition(50);
         }
     }
 
