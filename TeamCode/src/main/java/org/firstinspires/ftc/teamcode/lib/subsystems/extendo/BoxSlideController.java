@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.subsystems.extendo;
+package org.firstinspires.ftc.teamcode.lib.subsystems.extendo;
 
 import com.arcrobotics.ftclib.controller.PIDController;
 import com.arcrobotics.ftclib.controller.PIDFController;
@@ -7,34 +7,19 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class BoxSlideController {
-    double kP;
-    double kI;
-    double kD;
-    double kF;
-    PIDFController pidf = new PIDFController(kP,kI,kD,kF);
+//    double kP;
+//    double kI;
+//    double kD;
+//    double kF;
+    PIDFController pidf;
     DcMotor slides;
-    public void initialise(DcMotor s){
+    public void initialise(DcMotor s, double kp, double ki, double kd, double kf){
         slides = s;
+        pidf = new PIDFController(kp, ki, kd, kf);
     }
     public void setGains(double kp, double ki, double kd, double kf) {
-        // set our gains to some value
-        pidf.setP(kp);
-        pidf.setI(ki);
-        pidf.setD(kd);
-
-        // get our gain constants
-        kP = pidf.getP();
-        kI = pidf.getI();
-        kD = pidf.getD();
-        // set all gains
-        pidf.setPIDF(kP, kI, kD, 0.7);
-
-        // get all gain coefficients
-        double[] coeffs = pidf.getCoefficients();
-        kP = coeffs[0];
-        kI = coeffs[1];
-        kD = coeffs[2];
-        kF = coeffs[3];
+        // Set PIDF gains
+        pidf.setPIDF(kp, ki, kd, kf);
     }
 
     public void setSlidesPosition(double setpoint){

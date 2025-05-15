@@ -1,13 +1,11 @@
-package org.firstinspires.ftc.teamcode.subsystems;
+package org.firstinspires.ftc.teamcode.lib.subsystems;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
-import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
-import org.firstinspires.ftc.teamcode.subsystems.drivebase.MotorController;
-import org.firstinspires.ftc.teamcode.subsystems.extendo.BoxSlideController;
+import org.firstinspires.ftc.teamcode.lib.subsystems.drivebase.MotorController;
+import org.firstinspires.ftc.teamcode.lib.subsystems.extendo.BoxSlideController;
 
 @TeleOp(name="SubsystemsV1", group="Linear OpMode")
 public class SubsystemsV1 extends LinearOpMode {
@@ -22,7 +20,9 @@ public class SubsystemsV1 extends LinearOpMode {
                 hardwareMap.get(DcMotor.class, "frontRightMotor"),
                 hardwareMap.get(DcMotor.class, "backRightMotor")
         );
-        slides.initialise(hardwareMap.get(DcMotor.class, "boxSlides"));
+        slides.initialise(
+                hardwareMap.get(DcMotor.class, "boxSlides"),
+                0.7,0.7,0.7,0.7);
         slides.setGains(0.7,0.7,0.7,0.7);
 
         waitForStart();
