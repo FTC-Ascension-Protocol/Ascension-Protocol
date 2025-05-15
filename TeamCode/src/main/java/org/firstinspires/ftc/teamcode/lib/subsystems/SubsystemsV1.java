@@ -29,7 +29,7 @@ public class SubsystemsV1 extends LinearOpMode {
 
         while(opModeIsActive()){
             drivebase.drive(gamepad1);
-            slides.setSlidesPosition(50);
+            slides.setSlidesPosition(gamepad1.left_trigger * 100);
         }
     }
 
