@@ -11,11 +11,12 @@ public class BoxSlideController {
 //    double kI;
 //    double kD;
 //    double kF;
-    PIDFController pidf;
-    DcMotor slides;
+    private PIDFController pidf;
+    private DcMotor slides;
     public void initialise(DcMotor s, double kp, double ki, double kd, double kf){
         slides = s;
         pidf = new PIDFController(kp, ki, kd, kf);
+        slides.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
     public void setGains(double kp, double ki, double kd, double kf) {
         // Set PIDF gains
