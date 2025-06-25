@@ -13,8 +13,10 @@ public class BoxSlideController {
 //    double kF;
     private PIDFController pidf;
     private DcMotor slides;
-    public void initialise(DcMotor s, double kp, double ki, double kd, double kf){
+    private DcMotor pivot;
+    public void initialise(DcMotor s, DcMotor p, double kp, double ki, double kd, double kf){
         slides = s;
+        pivot = p;
         pidf = new PIDFController(kp, ki, kd, kf);
         slides.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
@@ -33,5 +35,17 @@ public class BoxSlideController {
             slides.setPower(output);
         }
         slides.setPower(0);
+    }
+
+    public void setSlidesPivot(double setpoint){
+        //Set PID Setpoint
+        pidf.setSetPoint(setpoint);
+        while(!pidf.atSetPoint()) {
+            double output = pidf.calculate(
+                    pivot.getCurrentPosition()
+            );
+            pivot.setPower(output);
+        }
+        pivot.setPower(0);
     }
 }

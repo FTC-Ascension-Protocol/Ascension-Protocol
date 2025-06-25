@@ -46,4 +46,10 @@ public class MotorController {
     public void drive(Gamepad gamepad1){
         setMotorSpeeds(-gamepad1.right_stick_x, -gamepad1.left_stick_x, -gamepad1.left_stick_y);
     }
+    public void setMotorSpeeds(double frontLeftSpeed, double backLeftSpeed, double frontRightSpeed, double backRightSpeed){
+        frontLeftMotor.setPower(frontLeftSpeed);
+        backLeftMotor.setPower(backLeftSpeed);
+        frontRightMotor.setPower(frontRightSpeed);
+        backRightMotor.setPower(backRightSpeed);
+    }
 }

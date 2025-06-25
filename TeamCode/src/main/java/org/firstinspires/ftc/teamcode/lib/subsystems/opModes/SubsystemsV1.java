@@ -1,8 +1,7 @@
-package org.firstinspires.ftc.teamcode.lib.subsystems;
+package org.firstinspires.ftc.teamcode.lib.subsystems.opModes;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.teamcode.lib.subsystems.drivebase.MotorController;
 import org.firstinspires.ftc.teamcode.lib.subsystems.extendo.BoxSlideController;
