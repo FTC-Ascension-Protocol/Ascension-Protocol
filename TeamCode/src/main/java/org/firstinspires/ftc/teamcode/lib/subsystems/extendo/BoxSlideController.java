@@ -48,4 +48,7 @@ public class BoxSlideController {
         }
         pivot.setPower(0);
     }
+    public void slideExtend(double power){
+        slides.setPower(power);
+    }
 }

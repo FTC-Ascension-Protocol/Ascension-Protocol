@@ -44,4 +44,7 @@ public class Robot {
     public void setSlidesPivot(double setpoint) {
         slides.setSlidesPivot(setpoint);
     }
+    public void setSlidePower(double power){
+        slides.slideExtend(power);
+    }
 }
