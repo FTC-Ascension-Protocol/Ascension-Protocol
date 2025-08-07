@@ -16,10 +16,11 @@ public class SubsystemsV2 extends LinearOpMode {
         robot.initialise(hardwareMap);
         waitForStart();
 
-
         while(opModeIsActive()){
             robot.drive(gamepad1);
-            robot.toggleClaw();
+            if(gamepad2.a){
+                robot.toggleClaw();
+            }
         }
     }
 }
