@@ -46,11 +46,7 @@ public class Robot {
     public void setSlidesPivot(double setpoint) {
         slides.setSlidesPivot(setpoint);
     }
-    public void toggleClaw(boolean a){
-        if(a){
-            claw.grab();
-        }
-    };
+    public void toggleClaw(){toggleClaw();};
 
 
 
