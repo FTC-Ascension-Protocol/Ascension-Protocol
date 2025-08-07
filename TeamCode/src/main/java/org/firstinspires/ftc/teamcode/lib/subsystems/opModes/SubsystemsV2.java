@@ -12,7 +12,7 @@ public class SubsystemsV2 extends LinearOpMode {
 
     @Override
     public void runOpMode(){
-
+        //do hardware map
         robot.initialise(hardwareMap);
         waitForStart();
 

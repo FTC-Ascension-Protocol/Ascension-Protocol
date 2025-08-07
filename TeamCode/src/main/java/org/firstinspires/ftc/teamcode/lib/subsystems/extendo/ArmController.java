@@ -14,8 +14,10 @@ public class ArmController {
     public void toggleClaw() {
         if (IsOpen) {
             claw.grab();
+            IsOpen = false;
         } else {
             claw.release();
+            IsOpen = true;
         }
 
     }
