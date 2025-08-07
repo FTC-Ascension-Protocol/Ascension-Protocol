@@ -51,6 +51,9 @@ public class Robot {
             claw.grab();
         }
     };
+
+
+
     public void setSlidePower(double power){
         slides.slideExtend(power);
     }

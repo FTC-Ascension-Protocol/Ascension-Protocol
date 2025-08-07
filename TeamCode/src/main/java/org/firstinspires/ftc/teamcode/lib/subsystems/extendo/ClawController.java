@@ -4,13 +4,14 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class ClawController {
     private Servo claw;
-    private boolean isClosed;
 
     public void grab() {
-        if (isClosed) {
-            claw.setPosition(0);
-        } else {
-            claw.setPosition(100);
-        }
+        claw.setPosition(20);
+    }
+    public void release() {
+        claw.setPosition(100);
+    }
+    public void setPosition(double position) {
+        claw.setPosition(position);
     }
 }
