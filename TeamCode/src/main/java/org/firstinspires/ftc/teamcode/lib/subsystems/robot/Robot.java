@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.lib.subsystems.robot;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.lib.subsystems.drivebase.MotorController;
 import org.firstinspires.ftc.teamcode.lib.subsystems.extendo.ArmController;
@@ -13,6 +14,7 @@ public class Robot {
     MotorController drivebase = new MotorController();
     BoxSlideController slides = new BoxSlideController();
     ArmController arm = new ArmController();
+    ClawController claw = new ClawController();
 
     public void initialise(HardwareMap hardwareMap) {
         drivebase.initialiseDrivebaseMotors(
@@ -27,6 +29,9 @@ public class Robot {
                 hardwareMap.get(DcMotor.class, "boxSlidePivot"),
                 0.7, 0.7, 0.7, 0.7);
         //slides.setGains(0.7, 0.7, 0.7, 0.7);
+        claw.initialise(
+                hardwareMap.get(Servo.class, "claw")
+        );
 
     }
     public void drive(Gamepad gamepad) {

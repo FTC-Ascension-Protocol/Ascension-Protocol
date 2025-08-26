@@ -5,11 +5,14 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class ClawController {
     private Servo claw;
 
+    public void initialise(Servo clawServo){
+        claw = clawServo;
+    }
     public void grab() {
-        claw.setPosition(20);
+        claw.setPosition(0.2);
     }
     public void release() {
-        claw.setPosition(100);
+        claw.setPosition(1);
     }
     public void setPosition(double position) {
         claw.setPosition(position);
