@@ -21,8 +21,7 @@ public class SubsystemsV2 extends LinearOpMode {
             if(gamepad2.a){
                 robot.toggleClaw();
             }
-            robot.setSlidePower(-1 * gamepad2.left_trigger);
-            robot.setSlidePower(gamepad2.right_trigger);
+            robot.setSlidePower(gamepad2.right_trigger - gamepad2.left_trigger);
             robot.setPivotPower(gamepad2.left_stick_y);
         }
     }
