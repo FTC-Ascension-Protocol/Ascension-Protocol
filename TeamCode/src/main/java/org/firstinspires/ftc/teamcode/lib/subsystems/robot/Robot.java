@@ -30,7 +30,8 @@ public class Robot {
                 0.7, 0.7, 0.7, 0.7);
         //slides.setGains(0.7, 0.7, 0.7, 0.7);
         claw.initialise(
-                hardwareMap.get(Servo.class, "claw")
+                hardwareMap.get(Servo.class, "claw"),
+                hardwareMap.get(Servo.class, "clawPivot")
         );
 
     }
@@ -58,5 +59,8 @@ public class Robot {
 
     public void setSlidePower(double power){
         slides.slideExtend(power);
+    }
+    public void setPivotPower(double power){
+        slides.setPivotPower(power);
     }
 }
