@@ -11,6 +11,7 @@ import org.firstinspires.ftc.teamcode.lib.subsystems.extendo.BoxSlideController;
 import org.firstinspires.ftc.teamcode.lib.subsystems.extendo.ClawController;
 
 public class Robot {
+    private double IsOpen = 0;
     MotorController drivebase = new MotorController();
     BoxSlideController slides = new BoxSlideController();
     ArmController arm = new ArmController();
@@ -53,14 +54,18 @@ public class Robot {
     public void setSlidesPivot(double setpoint) {
         slides.setSlidesPivot(setpoint);
     }
-    public void toggleClaw(){arm.toggleClaw();};
 
-
+    public void setClawPivot(double position) {claw.setPivot(position);}
 
     public void setSlidePower(double power){
         slides.slideExtend(power);
     }
     public void setPivotPower(double power){
         slides.setPivotPower(power);
+    }
+    public void toggleClaw() {
+        IsOpen = 0.6 - IsOpen;
+        IsOpen += 0.2;
+        claw.setPosition(IsOpen);
     }
 }

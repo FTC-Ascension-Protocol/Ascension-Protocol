@@ -22,4 +22,5 @@ public class ClawController {
     public void setPivot(double position) {
         clawPivot.setPosition(position);
     }
+
 }

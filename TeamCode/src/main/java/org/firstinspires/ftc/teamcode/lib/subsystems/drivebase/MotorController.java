@@ -16,12 +16,12 @@ public class MotorController {
         backLeftMotor = BL;
         frontRightMotor = FR;
         backRightMotor = BR;
+        backLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         frontLeftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        frontRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         power = Power;
     }
 
-    public void setMotorSpeeds(double forwardSpeed, double turnSpeed, double strafeSpeed){
+    public void setDrivebaseMotorSpeeds(double forwardSpeed, double turnSpeed, double strafeSpeed){
 
         //Control the motors with X, Y and rotate.
         double frontLeftSpeed = forwardSpeed + turnSpeed + strafeSpeed;
@@ -44,7 +44,7 @@ public class MotorController {
         backRightMotor.setPower(backRightSpeed/max3/power);
     }
     public void drive(Gamepad gamepad1){
-        setMotorSpeeds(-gamepad1.right_stick_x, -gamepad1.left_stick_x, -gamepad1.left_stick_y);
+        setDrivebaseMotorSpeeds(gamepad1.left_stick_y, gamepad1.right_stick_x, gamepad1.left_stick_x);
     }
     public void setMotorSpeeds(double frontLeftSpeed, double backLeftSpeed, double frontRightSpeed, double backRightSpeed){
         frontLeftMotor.setPower(frontLeftSpeed);
